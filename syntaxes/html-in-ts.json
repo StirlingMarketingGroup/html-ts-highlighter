@@ -1,0 +1,101 @@
+{
+    "name": "HTML in TypeScript strings",
+    "scopeName": "source.ts.embedded.html",
+    "injectionSelector": "L:source.ts string",
+    "patterns": [
+        {
+            "contentName": "text.html.basic",
+            "begin": "(<([A-Za-z][A-Za-z0-9-]*))",
+            "beginCaptures": {
+                "1": { "name": "entity.name.tag.html" }
+            },
+            "end": "(</([A-Za-z][A-Za-z0-9-]*)>|(/?>))",
+            "endCaptures": {
+                "1": { "name": "entity.name.tag.html" },
+                "2": { "name": "entity.name.tag.html" },
+                "3": { "name": "entity.name.tag.html" }
+            },
+            "patterns": [
+                {
+                    "name": "entity.other.attribute-name.html",
+                    "match": "\\b([A-Za-z0-9-]+)(?=\\=)"
+                },
+                {
+                    "name": "string.quoted.double.html",
+                    "match": "\"[^\"]*\""
+                },
+                {
+                    "name": "string.quoted.single.html",
+                    "match": "'[^']*'"
+                },
+                {
+                    "name": "meta.interpolation.ts",
+                    "begin": "\\$\\{",
+                    "beginCaptures": {
+                        "0": { "name": "punctuation.definition.interpolation.begin.ts" }
+                    },
+                    "end": "\\}",
+                    "endCaptures": {
+                        "0": { "name": "punctuation.definition.interpolation.end.ts" }
+                    },
+                    "patterns": [
+                        { "include": "source.ts" }
+                    ],
+                    "applyEndPatternLast": true
+                }
+            ]
+        },
+        {
+            "name": "meta.tag.block.any.html",
+            "begin": "(</?)",
+            "beginCaptures": {
+                "1": { "name": "punctuation.definition.tag.begin.html" }
+            },
+            "end": "(>)",
+            "endCaptures": {
+                "1": { "name": "punctuation.definition.tag.end.html" }
+            },
+            "patterns": [
+                {
+                    "include": "#tag-stuff"
+                }
+            ]
+        }
+    ],
+    "repository": {
+        "tag-stuff": {
+            "patterns": [
+                {
+                    "include": "#tag-name"
+                },
+                {
+                    "include": "#tag-attributes"
+                }
+            ]
+        },
+        "tag-name": {
+            "patterns": [
+                {
+                    "match": "([A-Za-z][A-Za-z0-9-]*)",
+                    "name": "entity.name.tag.html"
+                }
+            ]
+        },
+        "tag-attributes": {
+            "patterns": [
+                {
+                    "name": "entity.other.attribute-name.html",
+                    "match": "\\b([A-Za-z0-9-]+)(?=\\=)"
+                },
+                {
+                    "name": "string.quoted.double.html",
+                    "match": "\"[^\"]*\""
+                },
+                {
+                    "name": "string.quoted.single.html",
+                    "match": "'[^']*'"
+                }
+            ]
+        }
+    }
+}

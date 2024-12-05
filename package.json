@@ -1,0 +1,33 @@
+{
+    "name": "html-ts-highlighter",
+    "displayName": "HTML Syntax Highlighter for TypeScript",
+    "description": "Syntax highlighting for HTML inside TypeScript strings",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.55.0"
+    },
+    "publisher": "StirlingMarketingGroup",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/StirlingMarketingGroup/html-ts-highlighter.git"
+    },
+    "categories": [
+        "Snippets"
+    ],
+    "icon": "images/icon.png",
+    "contributes": {
+        "grammars": [
+            {
+                "scopeName": "source.ts.embedded.html",
+                "path": "./syntaxes/html-in-ts.json",
+                "injectTo": [
+                    "source.ts"
+                ],
+                "embeddedLanguages": {
+                    "text.html.basic": "html",
+                    "source.ts": "typescript"
+                }
+            }
+        ]
+    }
+}
