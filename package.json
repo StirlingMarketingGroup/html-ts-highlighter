@@ -2,7 +2,7 @@
     "name": "html-ts-highlighter",
     "displayName": "HTML Syntax Highlighter for TypeScript",
     "description": "Syntax highlighting for HTML inside TypeScript strings",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "engines": {
         "vscode": "^1.55.0"
     },
